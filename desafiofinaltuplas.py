@@ -8,14 +8,27 @@ pedidos = [
     ("Jaqueta", "Vestuário", 139.90, "Cancelado"),
 ]
 
+pedidos_entregues = []
+pedidos_valores = []
+soma_cancelado = 0
+escolha_categoria = []
+
+
 for n in pedidos:
     if n[3] == 'Entregue':
         print(f"Pedido: {n[0]} {n[3]}")
-pedido = []
-        
-for n in pedidos:
-    if n[3] == 'Entregue':
-        pedido.append(n[2])
+        pedidos_valores.append(n[2])
+        pedidos_entregues.append(n[0])
+    if n[1] == 'Vestuário' and n[3] == 'Cancelado':
+        soma_cancelado += 1
 
-print (f"Valor Total: {sum(pedido)}")
+print(f"Valor Total: {sum(pedidos_valores)}")
+print(f"Cancelados da categoria Vestuário: {soma_cancelado}")
+print(f"Últimos 3 pedidos entregues: {pedidos_entregues[-3:]}")
+
+escolha_categoria = input ("Escolha uma categoria:  ")
+
+for n in pedidos:
+    if escolha_categoria == n[1]:
+        print (f"Itens desta categoria: {n[0]}")
 
