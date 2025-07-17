@@ -27,8 +27,7 @@ while True: #roda infinito até digitar sair
             if escolha_usuario in carrinho_de_compras:
                 carrinho_de_compras += escolha_qtdade
             else:
-                carrinho_de_compras.setdefault(escolha_usuario, escolha_qtdade) #revisa
-                
+               carrinho_de_compras[escolha_usuario] = escolha_qtdade       
         else:
             print('Não temos esta quantidade, desculpe!')
     else:
@@ -40,9 +39,9 @@ print ("RESUMO DA COMPRA".center(40 , '-'))
 for jogo , qtd in carrinho_de_compras.items():
     preço = loja_games[jogo]["preço"]
     total += preço * qtd
-print(f'{jogo} x {qtd}' .center (40))
+    print(f'{jogo} x {qtd}' .center (40))
 print('-'*40)
-print(f'Total> R${total}'.center(40))
+print(f'Total> R${total:.2f}'.center(40))
 
 
 
